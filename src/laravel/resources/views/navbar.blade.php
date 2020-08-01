@@ -45,7 +45,14 @@
     @else
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          ゲストさん、こんにちは！
+          ゲストさん
+          @if ($time >= 5 && $time < 11)
+            、おはようございます！
+          @elseif ($time >= 11 && $time < 16)
+            、こんにちは！
+          @else
+            、こんばんは！
+          @endif
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{ route('login') }}">ログイン</a>
