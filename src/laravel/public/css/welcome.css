@@ -2,3 +2,17 @@ body {
     background-image: url('/img/welcome-background.jpg');
     background-attachment: fixed;
 }
+
+#links {
+    margin-bottom: 10px;
+}
+
+#search-input {
+    width: 80%;
+    display: inline-block;
+}
+
+#search-button {
+    margin-bottom: 5px;
+    display: inline-block;
+}

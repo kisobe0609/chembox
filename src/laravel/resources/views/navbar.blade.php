@@ -11,10 +11,6 @@
       </li>
   </ul>
   </div>
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-light" type="submit">Search</button>
-  </form>
   @if (Route::has('login'))
   <ul class="navbar-nav">         
     @auth
@@ -28,7 +24,12 @@
           <a class="dropdown-item" href="#">回答一覧</a>
           <a class="dropdown-item" href="#">設定</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">ログアウト</a>
+          <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+          ログアウト
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+          </form>
         </div>
       </li>
     @else
