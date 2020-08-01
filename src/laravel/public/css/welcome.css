@@ -1,8 +1,3 @@
-body {
-    background-image: url('/img/welcome-background.jpg');
-    background-attachment: fixed;
-}
-
 #links {
     margin-bottom: 10px;
 }
@@ -17,8 +12,13 @@ body {
     display: inline-block;
 }
 
+.first-section {
+    background-image: url('/img/welcome-background.jpg');
+    background-attachment: fixed;
+}
+
 .second-section {
-    background-color: aqua;
+    background-color: white;
 }
 
 .third-section {

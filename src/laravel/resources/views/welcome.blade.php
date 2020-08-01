@@ -4,7 +4,7 @@
 <link href="{{ asset('/css/welcome.css') }}" rel="stylesheet">
 @endsection
 @section('content')
-<section>
+<section class="first-section">
 <div class="flex-center position-ref full-height">
     <div class="content">
         <div class="title m-b-md">
