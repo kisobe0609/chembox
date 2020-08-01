@@ -14,12 +14,12 @@
   @if (Route::has('login'))
   <ul class="navbar-nav">         
     @auth
-    @php
-      $time = intval(date('H'));
-    @endphp
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{ Auth::user()->name }}さん
+          @php
+            $time = intval(date('H'));
+          @endphp
           @if ($time >= 5 && $time < 11)
             、おはようございます！
           @elseif ($time >= 11 && $time < 16)
@@ -46,6 +46,9 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           ゲストさん
+          @php
+            $time = intval(date('H'));
+          @endphp
           @if ($time >= 5 && $time < 11)
             、おはようございます！
           @elseif ($time >= 11 && $time < 16)
