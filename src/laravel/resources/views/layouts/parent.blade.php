@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+        <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet">
         <style>
             html, body {
                 background-color: #fff;
@@ -62,6 +63,9 @@
                 margin-bottom: 30px;
             }
         </style>
+        <!-- Javascript -->
+        <script src="{{ asset('/js/bootstrap.js') }}"></script>
+        <script src="{{ asset('/js/fontawesome.js') }}"></script>
     </head>
     <body>
         @include('navbar')
