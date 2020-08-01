@@ -64,8 +64,10 @@
             }
         </style>
         <!-- Javascript -->
+        <script src="{{ asset('/js/jquery-3.4.1.min.js') }}"></script>
         <script src="{{ asset('/js/bootstrap.js') }}"></script>
         <script src="{{ asset('/js/fontawesome.js') }}"></script>
+        @yield('pageCss')
     </head>
     <body>
         @include('navbar')

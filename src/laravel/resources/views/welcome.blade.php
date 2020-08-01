@@ -1,24 +1,13 @@
 @extends('layouts.parent')
-@section('title', '化学の質問箱!')
+@section('title', '化学の質問箱')
+@section('pageCss')
+<link href="{{ asset('/css/welcome.css') }}" rel="stylesheet">
+@endsection
 @section('content')
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
             <div class="content">
                 <div class="title m-b-md">
-                    化学の質問箱!
+                    化学の質問箱
                 </div>
 
                 <div class="links">
