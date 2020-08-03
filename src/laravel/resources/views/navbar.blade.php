@@ -1,10 +1,10 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-success">
-  <a class="navbar-brand" href="#"><i class="fas fa-flask"></i></a>
+  <a class="navbar-brand" href="{{ route('home') }}"><i class="fas fa-flask"></i></a>
   </a>
   <div class="collapse navbar-collapse">
   <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">質問する</a>
+        <a class="nav-link" href="{{ route('ask') }}">質問する</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">調べる</a>

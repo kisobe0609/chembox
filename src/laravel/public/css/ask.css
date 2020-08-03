@@ -1,0 +1,13 @@
+body {
+    background-image: url('/img/grid-background2.gif');
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    margin: 20px 0;
+}
+
+#form {
+    background-color: white;
+}
