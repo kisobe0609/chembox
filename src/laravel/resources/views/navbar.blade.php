@@ -1,5 +1,5 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-success">
-  <a class="navbar-brand" href="{{ route('home') }}"><i class="fas fa-flask"></i></a>
+  <a class="navbar-brand" href="{{ route('index') }}"><i class="fas fa-flask"></i></a>
   </a>
   <div class="collapse navbar-collapse">
   <ul class="navbar-nav">
