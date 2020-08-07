@@ -7,24 +7,25 @@
 <h1>質問する</h1>
 
 <div class="container" id="form">
-<form>
+<form action="{{ route('posts.store') }}" method="POST">
+  @csrf
   <div class="form-group">
     <label for="title">タイトル</label>
-    <input type="text" class="form-control" id="title" placeholder="タイトル">
+    <input type="text" name="title" class="form-control" id="title" placeholder="タイトル">
   </div>
   <div class="form-group">
     <label for="category">カテゴリー</label>
-    <select class="form-control" id="category">
-      <option>理論化学</option>
-      <option>有機化学</option>
-      <option>無機化学</option>
-      <option>高分子化合物</option>
-      <option>天然有機物</option>
+    <select name="category_id" class="form-control" id="category">
+      <option value="1">理論化学</option>
+      <option value="2">有機化学</option>
+      <option value="3">無機化学</option>
+      <option value="4">高分子化合物</option>
+      <option value="5">天然有機物</option>
     </select>
   </div>
   <div class="form-group">
     <label for="content">本文</label>
-    <textarea class="form-control" id="content" rows="10"></textarea>
+    <textarea name="content" class="form-control" id="content" rows="10"></textarea>
   </div>
   <div class="form-group">
     <label for="attached_file_1">添付ファイル1</label>
