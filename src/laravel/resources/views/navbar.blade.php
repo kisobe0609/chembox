@@ -9,6 +9,9 @@
       <li class="nav-item">
         <a class="nav-link" href="#">調べる</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('posts.index') }}">答える</a>
+      </li>
   </ul>
   </div>
   @if (Route::has('login'))

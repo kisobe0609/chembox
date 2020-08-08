@@ -14,7 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::where('is_closed', 0)->orderBy('created_at', 'desc')->get();
+
+        return view('posts.index',['posts' => $posts]);
     }
 
     /**
