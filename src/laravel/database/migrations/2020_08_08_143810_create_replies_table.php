@@ -16,7 +16,7 @@ class CreateRepliesTable extends Migration
         Schema::create('replies', function (Blueprint $table) {
             $table->id();
             $table->integer('post_id');
-            $table->integer('author_id')->default(0);
+            $table->integer('author_id')->nullable();
             $table->text('content');
             $table->timestamps();
         });
