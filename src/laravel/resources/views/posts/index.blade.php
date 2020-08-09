@@ -10,7 +10,6 @@
 <div class="container post">
   <span class="btn btn-danger">{{ $post->category->category_name}}</span>
   <h3>{{ $post->title }}</h3>
-  <hr>
   {{ $post->content }}
   <hr>
   <form action="{{ route('replies.store') }}" method="POST">
@@ -19,6 +18,10 @@
     <textarea name="content">
     </textarea>
     <input type="submit" value="回答する" class="btn btn-success">
+    <hr>
+    @foreach($post->replies as $reply)
+    {{ $reply->content }}<i class="far fa-thumbs-up"></i><br>
+    @endforeach
   </form>
 </div>
 @endforeach

@@ -17,6 +17,6 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/ask', 'HomeController@ask')->name('ask');
-Route::resource('posts', 'PostController');
-Route::resource('replies', 'ReplyController');
+Route::resource('posts', 'PostController', ['only' => ['index', 'store']]);
+Route::resource('replies', 'ReplyController', ['only' => ['store']]);
 
