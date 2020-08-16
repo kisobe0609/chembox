@@ -13,4 +13,8 @@ class Reply extends Model
     public function category(){  
         return $this->belongsTo('App\Post', 'post_id');
     }
+
+    public function author(){  
+        return $this->belongsTo('App\User', 'author_id');
+    }
 }

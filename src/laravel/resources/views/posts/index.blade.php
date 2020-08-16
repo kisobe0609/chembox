@@ -27,6 +27,7 @@
     <hr>
     @foreach($post->replies as $reply)
     {!! nl2br(e($reply->content)) !!}<br>
+    回答者：{{ $reply->author->name }}<br>
     {{ $reply->created_at->format('Y年m月d日 H:i:s') }}<br>
     @endforeach
   </form>
