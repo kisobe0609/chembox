@@ -20,7 +20,7 @@
   <hr>
   <form action="{{ route('replies.store') }}" method="POST">
     @csrf
-    <input type="hidden" name="author_id" value="{{ Auth::id() ?? 0 }}">
+    <input type="hidden" name="author_id" value="{{ Auth::id() ?? 1 }}">
     <input type="hidden" name="post_id" value="{{ $post->id }}">
     <textarea name="content"></textarea>
     <input type="submit" value="回答する" class="btn btn-primary">
