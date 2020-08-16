@@ -19,4 +19,8 @@ class Post extends Model
     public function replies(){
         return $this->hasMany('App\Reply', 'post_id');
     }
+
+    public function author(){
+        return $this->belongsTo('App\User', 'author_id');
+    }
 }

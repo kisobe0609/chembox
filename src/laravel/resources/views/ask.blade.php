@@ -9,6 +9,7 @@
 <div class="container" id="form">
 <form action="{{ route('posts.store') }}" method="POST">
   @csrf
+  <input type="hidden" name="author_id" value="{{ Auth::id() ?? 0 }}">
   <div class="form-group">
     <label for="title">タイトル</label>
     <input type="text" name="title" class="form-control" id="title" placeholder="タイトル">

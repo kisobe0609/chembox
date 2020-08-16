@@ -38,6 +38,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $post = New Post;
+        $post->author_id = $request->author_id;
         $post->title = $request->title;
         $post->content = $request->content;
         $post->category_id = $request->category_id;
@@ -90,5 +91,13 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function solve($id){
+        $post = Post::find($id);
+        $post->is_closed = 1;
+        $post->save();
+
+        return redirect('/posts');
     }
 }
