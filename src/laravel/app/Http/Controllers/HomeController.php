@@ -46,6 +46,7 @@ class HomeController extends Controller
         $post_count_closed = Post::where('author_id', Auth::user()->id)->where('is_closed', 1)->count();
         $replies = Reply::where('author_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
         $reply_count = Reply::where('author_id', Auth::user()->id)->count();
-        return view('mypage', compact('posts', 'post_count', 'post_count_closed', 'replies', 'reply_count'));
+        $reply_count_bestanswer = Reply::where('author_id', Auth::user()->id)->where('is_bestanswer', 1)->count();
+        return view('mypage', compact('posts', 'post_count', 'post_count_closed', 'replies', 'reply_count', 'reply_count_bestanswer'));
     }
 }

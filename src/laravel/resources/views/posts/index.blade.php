@@ -29,6 +29,9 @@
     {!! nl2br(e($reply->content)) !!}<br>
     回答者：{{ $reply->author->name }}<br>
     {{ $reply->created_at->format('Y年m月d日 H:i:s') }}<br>
+      @if(Auth::user()->id ?? 1 == $reply->post->author_id)
+        <a href="/replies/{{ $reply->id }}/close" class="btn btn-success">ベストアンサーに選ぶ</a><br>
+      @endif
     @endforeach
   </form>
 </div>

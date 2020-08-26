@@ -10,7 +10,7 @@
     <h3>ダッシュボード</h3>
     <hr>
     質問数：{{ $post_count }}（解決数：{{ $post_count_closed }}）<br>
-    回答数：{{ $reply_count }}
+    回答数：{{ $reply_count }}（ベストアンサー数：{{ $reply_count_bestanswer }}）
 </div>
 
 <div class="container frame">
@@ -20,9 +20,9 @@
   <span class="badge badge-primary">{{ $post->category->category_name}}</span>
   @if($post->is_closed == 1)
         <span class="badge badge-success">解決済</span>
-      @else
+  @else
         <span class="badge badge-danger">未解決</span>
-      @endif
+  @endif
   <h5>{{ $post->title }}</h5>
 @endforeach
 </div>
@@ -32,6 +32,9 @@
     <hr>
 @foreach($replies as $reply)
   <span class="badge badge-primary">{{ $reply->post->category->category_name}}</span>
+  @if($reply->is_bestanswer == 1)
+        <span class="badge badge-success">ベストアンサー</span>
+  @endif
   <h5>{{ $reply->post->title }}</h5>
   <p>{{ $reply->content }}</p>
 @endforeach
