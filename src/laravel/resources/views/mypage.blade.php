@@ -30,14 +30,21 @@
 <div class="container frame">
     <h3>回答一覧</h3>
     <hr>
-@foreach($replies as $reply)
-  <span class="badge badge-primary">{{ $reply->post->category->category_name}}</span>
-  @if($reply->is_bestanswer == 1)
-        <span class="badge badge-success">ベストアンサー</span>
-  @endif
-  <h5>{{ $reply->post->title }}</h5>
-  <p>{{ $reply->content }}</p>
-@endforeach
+    <h4>ベストアンサーに選ばれた回答</h4>
+    @foreach($bestanswers as $bestanswer)
+        <span class="badge badge-primary">{{ $bestanswer->post->category->category_name}}</span>
+        <h5>{{ $bestanswer->post->title }}</h5>
+        <p>{{ $bestanswer->content }}</p>
+    @endforeach
+    <hr>
+    <h4>その他の回答</h4>
+    @foreach($replies as $reply)
+        <span class="badge badge-primary">{{ $reply->post->category->category_name}}</span>
+        <h5>{{ $reply->post->title }}</h5>
+        <p>{{ $reply->content }}</p>
+    @endforeach
+
+
 </div>
 
 @endsection
