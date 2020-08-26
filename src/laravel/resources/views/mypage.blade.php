@@ -9,7 +9,7 @@
 <div class="container frame">
     <h3>ダッシュボード</h3>
     <hr>
-    質問数：{{ $post_count }}<br>
+    質問数：{{ $post_count }}（解決数：{{ $post_count_closed }}）<br>
     回答数：{{ $reply_count }}
 </div>
 
