@@ -10,7 +10,7 @@
     <h3>ダッシュボード</h3>
     <hr>
     質問数：{{ $post_count }}（解決数：{{ $post_count_closed }}）<br>
-    回答数：{{ $reply_count }}（ベストアンサー数：{{ $reply_count_bestanswer }}）
+    回答数：{{ $reply_count }}（ベストアンサー数：{{ $bestanswer_count }}）
 </div>
 
 <div class="container frame">
