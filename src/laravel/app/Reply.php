@@ -17,4 +17,8 @@ class Reply extends Model
     public function author(){  
         return $this->belongsTo('App\User', 'author_id');
     }
+
+    public function post(){
+        return $this->belongsTo('App\Post', 'post_id');
+    }
 }

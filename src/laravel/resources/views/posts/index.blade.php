@@ -8,7 +8,7 @@
 
 @foreach($posts as $post)
 <div class="container post">
-  <span class="badge badge-danger">{{ $post->category->category_name}}</span>
+  <span class="badge badge-primary">{{ $post->category->category_name}}</span>
   <h3>{{ $post->title }}</h3>
   {{ $post->content }}<br>
   投稿者：{{ $post->author->name }}<br>

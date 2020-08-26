@@ -33,8 +33,6 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{ route('mypage') }}">マイページ</a>
-          <a class="dropdown-item" href="#">質問一覧</a>
-          <a class="dropdown-item" href="#">回答一覧</a>
           <a class="dropdown-item" href="#">設定</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
