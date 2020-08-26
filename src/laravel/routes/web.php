@@ -20,4 +20,6 @@ Route::get('/ask', 'HomeController@ask')->name('ask');
 Route::resource('posts', 'PostController', ['only' => ['index', 'store']]);
 Route::get('/posts/{id}/solve', 'PostController@solve')->name('posts.solve');
 Route::resource('replies', 'ReplyController', ['only' => ['store']]);
+Route::get('/mypage', 'HomeController@mypage')->name('mypage');
+
 
