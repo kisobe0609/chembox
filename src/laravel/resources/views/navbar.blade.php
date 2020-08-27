@@ -7,7 +7,7 @@
         <a class="nav-link" href="{{ route('ask') }}">質問する</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">調べる</a>
+        <a class="nav-link" href="{{ route('posts.closed') }}">調べる</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('posts.index') }}">答える</a>

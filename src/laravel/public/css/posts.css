@@ -16,3 +16,9 @@ h1 {
     padding: 20px;
     margin-bottom: 20px;
 }
+
+.bestanswer{
+    background-color:palegoldenrod;
+    /* color: navy; */
+    font-weight: bold;
+}

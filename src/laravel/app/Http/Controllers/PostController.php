@@ -19,6 +19,13 @@ class PostController extends Controller
         return view('posts.index',['posts' => $posts]);
     }
 
+    public function closed()
+    {
+        $posts = Post::where('is_closed', 1)->orderBy('created_at', 'desc')->get();
+
+        return view('posts.closed', compact('posts'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
