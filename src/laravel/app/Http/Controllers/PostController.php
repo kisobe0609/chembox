@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\PostCategory;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -22,8 +23,17 @@ class PostController extends Controller
     public function closed()
     {
         $posts = Post::where('is_closed', 1)->orderBy('created_at', 'desc')->get();
+        $category_name = '';
 
-        return view('posts.closed', compact('posts'));
+        return view('posts.closed', compact('posts', 'category_name'));
+    }
+
+    public function closed_category($id)
+    {
+        $posts = Post::where('is_closed', 1)->where('category_id', $id)->orderBy('created_at', 'desc')->get();
+        $category_name = PostCategory::find($id)->category_name;
+
+        return view('posts.closed', compact('posts', 'category_name'));
     }
 
     /**

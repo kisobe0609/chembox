@@ -17,7 +17,7 @@ class PostCategoriesTableSeeder extends Seeder
             ['category_name' => '有機化学'],
             ['category_name' => '無機化学'],
             ['category_name' => '高分子化合物'],
-            ['category_name' => '生物有機物']
+            ['category_name' => '天然有機物']
         ]);
     }
 }

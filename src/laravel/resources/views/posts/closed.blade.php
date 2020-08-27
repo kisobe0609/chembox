@@ -4,7 +4,7 @@
 <link href="{{ asset('/css/posts.css') }}" rel="stylesheet">
 @endsection
 @section('content')
-<h1>答える</h1>
+<h1>調べる {{ $category_name }}</h1>
 
 @foreach($posts as $post)
 <div class="container post">

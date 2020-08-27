@@ -12,11 +12,9 @@
         </div>
 
         <div class="links" id="links">
-            <a href="#">理論化学</a>
-            <a href="#">有機化学</a>
-            <a href="#">無機化学</a>
-            <a href="#">高分子化合物</a>
-            <a href="#">天然有機物</a>
+            @foreach($categories as $category)
+                <a href="{{ route('posts.closed_category', ['id' => $category->id]) }}">{{ $category->category_name }}</a>
+            @endforeach
         </div>
         <div class="container">
             <form>

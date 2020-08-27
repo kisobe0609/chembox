@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\PostCategory;
 use App\Reply;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $categories = PostCategory::get();
+
+        return view('welcome', compact('categories'));
     }
 
     public function home()
