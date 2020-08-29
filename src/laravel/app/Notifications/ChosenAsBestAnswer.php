@@ -7,19 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class PostReplied extends Notification
+class ChosenAsBestAnswer extends Notification
 {
     use Queueable;
-    protected $post_title;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($post_title)
+    public function __construct()
     {
-        $this->post_title = $post_title;
+        //
     }
 
     /**
@@ -56,7 +55,7 @@ class PostReplied extends Notification
     public function toArray($notifiable)
     {
         return [
-            'text' => '質問「' . $this->post_title . '」に回答がつきました！',
+            'text' => '回答がベストアンサーに選ばれました！'
         ];
     }
 }

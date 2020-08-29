@@ -32,7 +32,7 @@
         </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             @foreach(App\User::find(Auth::user()->id)->notifications as $notification)
-              <a class="dropdown-item" href="#">{{ $notification->data['post_title'] }}</a>
+              <a class="dropdown-item" href="#">{{ $notification->data['text'] }}</a>
             @endforeach
           </div>
       </li>

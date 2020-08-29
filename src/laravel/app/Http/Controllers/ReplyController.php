@@ -6,6 +6,7 @@ use App\User;
 use App\Reply;
 use App\Post;
 use App\Notifications\PostReplied;
+use App\Notifications\ChosenAsBestAnswer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,6 +37,8 @@ class ReplyController extends Controller
             $post->is_closed = 1;
             $reply->save();
             $post->save();
+            $reply_author = Reply::find($id)->author_id;
+            User::find($reply_author)->notify(new ChosenAsBestAnswer);
     
             return redirect('/posts');
         }
