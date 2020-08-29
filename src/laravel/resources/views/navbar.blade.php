@@ -24,11 +24,17 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-bell"></i>
-        <span class="badge badge-pill badge-danger">1</span>
+          @if(App\User::find(Auth::user()->id)->notifications->count() == 0)
+            <span class="badge badge-pill badge-secondary">0</span>
+          @else
+            <span class="badge badge-pill badge-danger">{{ App\User::find(Auth::user()->id)->notifications->count() }}</span>
+          @endif
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">fasgahsuigahsfoashoasfsa</a>
-        </div>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            @foreach(App\User::find(Auth::user()->id)->notifications as $notification)
+              <a class="dropdown-item" href="#">{{ $notification->data['post_title'] }}</a>
+            @endforeach
+          </div>
       </li>
   </ul>
   @endauth
