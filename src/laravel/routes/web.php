@@ -24,6 +24,10 @@ Route::get('/posts/{id}/solve', 'PostController@solve')->name('posts.solve');
 Route::resource('replies', 'ReplyController', ['only' => ['store']]);
 Route::get('/mypage', 'HomeController@mypage')->name('mypage');
 Route::get('/replies/{id}/close', 'ReplyController@closePost')->name('replies.close');
+Route::get('/markAsRead', function() {
+    auth()->user()->unreadNotifications->markAsRead();
+    redirect()->back();
+})->name('markAsRead');
 
 
 

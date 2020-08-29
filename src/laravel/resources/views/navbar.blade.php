@@ -10,8 +10,15 @@
       </li>
     @endauth
     @endif
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('posts.closed') }}">調べる</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">調べる</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @foreach($categories as $category)
+              <a class="dropdown-item" href="{{ route('posts.closed_category', ['id' => $category->id]) }}">{{ $category->category_name }}</a>
+          @endforeach
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ route('posts.closed') }}">全て</a>
+        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('posts.index') }}">答える</a>
@@ -20,22 +27,28 @@
   </div>
   @if (Route::has('login'))
   @auth
-  <ul class="navbar-nav">         
+  <ul class="navbar-nav">
+      @if(App\User::find(Auth::user()->id)->unreadnotifications->count())         
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-bell"></i>
-          @if(App\User::find(Auth::user()->id)->notifications->count() == 0)
-            <span class="badge badge-pill badge-secondary">0</span>
-          @else
-            <span class="badge badge-pill badge-danger">{{ App\User::find(Auth::user()->id)->notifications->count() }}</span>
-          @endif
+            <span class="badge badge-pill badge-danger">{{ App\User::find(Auth::user()->id)->unreadnotifications->count() }}</span>
         </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            @foreach(App\User::find(Auth::user()->id)->notifications as $notification)
+            @foreach(App\User::find(Auth::user()->id)->unreadnotifications as $notification)
               <a class="dropdown-item" href="#">{{ $notification->data['text'] }}</a>
             @endforeach
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{{ route('markAsRead') }}"><i class="fas fa-check"></i>全ての通知を既読にする</a>
           </div>
       </li>
+      @else
+        <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fas fa-bell"></i>
+        <span class="badge badge-pill badge-secondary">0</span>
+        </a>
+        </li>
+      @endif
   </ul>
   @endauth
   @endif
