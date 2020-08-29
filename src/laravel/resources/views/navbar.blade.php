@@ -3,9 +3,13 @@
   </a>
   <div class="collapse navbar-collapse">
   <ul class="navbar-nav">
+    @if (Route::has('login'))
+    @auth
       <li class="nav-item">
         <a class="nav-link" href="{{ route('ask') }}">質問する</a>
       </li>
+    @endauth
+    @endif
       <li class="nav-item">
         <a class="nav-link" href="{{ route('posts.closed') }}">調べる</a>
       </li>
@@ -14,6 +18,22 @@
       </li>
   </ul>
   </div>
+  @if (Route::has('login'))
+  @auth
+  <ul class="navbar-nav">         
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-bell"></i>
+        <span class="badge badge-pill badge-danger">1</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">fasgahsuigahsfoashoasfsa</a>
+        </div>
+      </li>
+  </ul>
+  @endauth
+  @endif
+
   @if (Route::has('login'))
   <ul class="navbar-nav">         
     @auth
