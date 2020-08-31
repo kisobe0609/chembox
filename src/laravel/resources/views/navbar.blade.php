@@ -21,7 +21,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('posts.index') }}">答える</a>
+        <a class="nav-link" href="{{ route('posts.open') }}">答える</a>
       </li>
   </ul>
   </div>

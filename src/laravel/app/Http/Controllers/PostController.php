@@ -15,25 +15,34 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('is_closed', 0)->orderBy('created_at', 'desc')->get();
+        // $posts = Post::where('is_closed', 0)->orderBy('created_at', 'desc')->get();
 
-        return view('posts.index',['posts' => $posts]);
+        // return view('posts.index',['posts' => $posts]);
+    }
+
+    public function open()
+    {
+        $posts = Post::where('is_closed', 0)->orderBy('created_at', 'desc')->get();
+        $categories = PostCategory::get();
+        return view('posts.open', compact('posts', 'categories'));
     }
 
     public function closed()
     {
         $posts = Post::where('is_closed', 1)->orderBy('created_at', 'desc')->get();
+        $categories = PostCategory::get();
         $category_name = '';
 
-        return view('posts.closed', compact('posts', 'category_name'));
+        return view('posts.closed', compact('posts', 'categories', 'category_name'));
     }
 
     public function closed_category($id)
     {
         $posts = Post::where('is_closed', 1)->where('category_id', $id)->orderBy('created_at', 'desc')->get();
+        $categories = PostCategory::get();
         $category_name = PostCategory::find($id)->category_name;
 
-        return view('posts.closed', compact('posts', 'category_name'));
+        return view('posts.closed', compact('posts', 'categories', 'category_name'));
     }
 
     /**
