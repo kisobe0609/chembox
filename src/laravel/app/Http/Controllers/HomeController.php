@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    protected $categories;
     /**
      * Create a new controller instance.
      *
@@ -17,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //
+        $this->categories = PostCategory::get();
     }
 
     /**
@@ -27,27 +28,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = PostCategory::get();
-
-        return view('welcome', compact('categories'));
+        return view('welcome', ['categories' => $this->categories]);
     }
 
     public function home()
     {
-        return view('home');
+        //
     }
 
     public function ask()
     {
-        $categories = PostCategory::get();
-
-        return view('ask', compact('categories'));
+        return view('ask', ['categories' => $this->categories]);
     }
 
     public function mypage()
     {
-        $categories = PostCategory::get();
-        
         $posts = Post::where('author_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
         $post_count = Post::where('author_id', Auth::user()->id)->count();
         $post_count_closed = Post::where('author_id', Auth::user()->id)->where('is_closed', 1)->count();
@@ -55,6 +50,6 @@ class HomeController extends Controller
         $replies = Reply::where('author_id', Auth::user()->id)->where('is_bestanswer', 0)->orderBy('created_at', 'desc')->get();
         $reply_count = Reply::where('author_id', Auth::user()->id)->count();
         $bestanswer_count = Reply::where('author_id', Auth::user()->id)->where('is_bestanswer', 1)->count();
-        return view('mypage', compact('posts', 'post_count', 'post_count_closed', 'bestanswers', 'replies', 'reply_count', 'bestanswer_count', 'categories'));
+        return view('mypage', ['categories' => $this->categories], compact('posts', 'post_count', 'post_count_closed', 'bestanswers', 'replies', 'reply_count', 'bestanswer_count'));
     }
 }

@@ -23,7 +23,7 @@
   @else
         <span class="badge badge-danger">未解決</span>
   @endif
-  <h5>{{ $post->title }}</h5>
+  <h5><a href="{{ route('posts.each', ['id' => $post->id]) }}">{{ $post->title }}</a></h5>
 @endforeach
 </div>
 
@@ -33,7 +33,7 @@
     <h4>ベストアンサーに選ばれた回答</h4>
     @foreach($bestanswers as $bestanswer)
         <span class="badge badge-primary">{{ $bestanswer->post->category->category_name}}</span>
-        <h5>{{ $bestanswer->post->title }}</h5>
+        <h5><a href="{{ route('posts.each', ['id' => $bestanswer->post->id]) }}">{{ $bestanswer->post->title }}</a></h5>
         <p>{{ $bestanswer->content }}</p>
     @endforeach
     <hr>

@@ -8,41 +8,57 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    protected $categories;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->categories = PostCategory::get();
+    }
+
     public function index()
     {
-        // $posts = Post::where('is_closed', 0)->orderBy('created_at', 'desc')->get();
+        //
+    }
 
-        // return view('posts.index',['posts' => $posts]);
+    public function each($id)
+    {
+        $post = Post::find($id);
+        return view('posts.each', ['categories' => $this->categories], compact('post'));
     }
 
     public function open()
     {
         $posts = Post::where('is_closed', 0)->orderBy('created_at', 'desc')->get();
-        $categories = PostCategory::get();
-        return view('posts.open', compact('posts', 'categories'));
+        $category_name = '';
+        return view('posts.open', ['categories' => $this->categories], compact('posts', 'category_name'));
+    }
+
+    public function open_category($id)
+    {
+        $posts = Post::where('is_closed', 0)->where('category_id', $id)->orderBy('created_at', 'desc')->get();
+        $category_name = PostCategory::find($id)->category_name;
+
+        return view('posts.open', ['categories' => $this->categories], compact('posts', 'category_name'));
     }
 
     public function closed()
     {
         $posts = Post::where('is_closed', 1)->orderBy('created_at', 'desc')->get();
-        $categories = PostCategory::get();
         $category_name = '';
 
-        return view('posts.closed', compact('posts', 'categories', 'category_name'));
+        return view('posts.closed', ['categories' => $this->categories], compact('posts', 'category_name'));
     }
 
     public function closed_category($id)
     {
         $posts = Post::where('is_closed', 1)->where('category_id', $id)->orderBy('created_at', 'desc')->get();
-        $categories = PostCategory::get();
         $category_name = PostCategory::find($id)->category_name;
 
-        return view('posts.closed', compact('posts', 'categories', 'category_name'));
+        return view('posts.closed', ['categories' => $this->categories], compact('posts', 'category_name'));
     }
 
     /**

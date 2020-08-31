@@ -20,8 +20,15 @@
             <a class="dropdown-item" href="{{ route('posts.closed') }}">全て</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('posts.open') }}">答える</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">答える</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @foreach($categories as $category)
+              <a class="dropdown-item" href="{{ route('posts.open_category', ['id' => $category->id]) }}">{{ $category->category_name }}</a>
+          @endforeach
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ route('posts.open') }}">全て</a>
+        </div>
       </li>
   </ul>
   </div>
