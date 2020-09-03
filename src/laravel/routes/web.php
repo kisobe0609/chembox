@@ -29,7 +29,7 @@ Route::get('/mypage', 'HomeController@mypage')->name('mypage');
 Route::get('/replies/{id}/close', 'ReplyController@closePost')->name('replies.close');
 Route::get('/markAsRead', function() {
     auth()->user()->unreadNotifications->markAsRead();
-    redirect()->back();
+    // redirect()->back();
 })->name('markAsRead');
 
 
